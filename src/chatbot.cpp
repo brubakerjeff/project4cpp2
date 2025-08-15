@@ -30,6 +30,9 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
+
+
+
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
@@ -45,8 +48,48 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+// Copy constructor
+ChatBot::ChatBot(const ChatBot& other) {
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+    name = new char[strlen(other.name) + 1];
+    strcpy(name, other.name);
+}
+
+// Copy assignment operator
+ChatBot& ChatBot::operator=(const ChatBot& other) {
+    std::cout << "ChatBot Copy Assignment Operator" << std::endl;
+
+    if (this == &other) return *this; // Self-assignment check
+
+    delete[] name;
+    name = new char[strlen(other.name) + 1];
+    strcpy(name, other.name);
+
+    return *this;
+}
+
+// Move constructor
+ChatBot::ChatBot(ChatBot&& other) noexcept {
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    name = other.name;
+    other.name = nullptr;
+}
+
+// Move assignment operator
+ChatBot& ChatBot::operator=(ChatBot&& other) noexcept {
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
+
+    if (this == &other) return *this; // Self-assignment check
+
+    delete[] name;
+    name = other.name;
+    other.name = nullptr;
+
+    return *this;
+}
 ////
 //// EOF STUDENT CODE
+
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
