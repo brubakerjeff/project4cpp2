@@ -63,3 +63,15 @@ ChatBot Move Assignment Operator
 ChatBot Destructor
 ChatBot Destructor 
 ```
+
+
+e>; _Alloc = std::allocator<std::unique_ptr<GraphEdge> >; value_type = std::unique_ptr<GraphEdge>]’
+/home/robond/project4cpp2/src/graphnode.cpp:32:26:   required from here
+/usr/include/c++/13/bits/new_allocator.h:191:11: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = GraphEdge; _Dp = std::default_delete<GraphEdge>]’
+  191 |         { ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/memory:78,
+                 from /home/robond/project4cpp2/src/chatbot.h:6,
+                 from /home/robond/project4cpp2/src/graphnode.h:6,
+                 from /home/robond/project4cpp2/src/graphnode.cpp:2:
+/usr/include/c++/13/bits/unique_ptr.h:522:7: note: declared here
