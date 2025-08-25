@@ -65,13 +65,10 @@ ChatBot Destructor
 ```
 
 
-e>; _Alloc = std::allocator<std::unique_ptr<GraphEdge> >; value_type = std::unique_ptr<GraphEdge>]’
-/home/robond/project4cpp2/src/graphnode.cpp:32:26:   required from here
-/usr/include/c++/13/bits/new_allocator.h:191:11: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = GraphEdge; _Dp = std::default_delete<GraphEdge>]’
-  191 |         { ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
-      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from /usr/include/c++/13/memory:78,
-                 from /home/robond/project4cpp2/src/chatbot.h:6,
-                 from /home/robond/project4cpp2/src/graphnode.h:6,
-                 from /home/robond/project4cpp2/src/graphnode.cpp:2:
-/usr/include/c++/13/bits/unique_ptr.h:522:7: note: declared here
+[ 50%] Building CXX object CMakeFiles/membot.dir/src/chatlogic.cpp.o
+[ 66%] Building CXX object CMakeFiles/membot.dir/src/graphedge.cpp.o
+[ 83%] Building CXX object CMakeFiles/membot.dir/src/graphnode.cpp.o
+/home/robond/project4cpp2/src/graphnode.cpp: In member function ‘void GraphNode::AddEdgeToParentNode(GraphEdge*)’:
+/home/robond/project4cpp2/src/graphnode.cpp:27:27: error: no matching function for call to ‘std::vector<std::unique_ptr<GraphEdge> >::push_back(GraphEdge*&)’
+   27 |     _parentEdges.push_back(edge);
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~~
