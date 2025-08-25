@@ -24,12 +24,12 @@ void GraphNode::AddToken(std::string token)
 
 void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
 {
-    _parentEdges.push_back(edge);
+    _parentEdges.push_back(std::move(edge));
 }
 
 void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
-    _childEdges.push_back(edge);
+    _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE

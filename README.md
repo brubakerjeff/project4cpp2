@@ -65,10 +65,17 @@ ChatBot Destructor
 ```
 
 
-[ 50%] Building CXX object CMakeFiles/membot.dir/src/chatlogic.cpp.o
-[ 66%] Building CXX object CMakeFiles/membot.dir/src/graphedge.cpp.o
-[ 83%] Building CXX object CMakeFiles/membot.dir/src/graphnode.cpp.o
-/home/robond/project4cpp2/src/graphnode.cpp: In member function ‘void GraphNode::AddEdgeToParentNode(GraphEdge*)’:
-/home/robond/project4cpp2/src/graphnode.cpp:27:27: error: no matching function for call to ‘std::vector<std::unique_ptr<GraphEdge> >::push_back(GraphEdge*&)’
-   27 |     _parentEdges.push_back(edge);
-      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+/home/robond/project4cpp2/src/graphnode.cpp:27:27: error: no matching function for call to ‘std::vector<std::unique_ptr<GraphEdge> >::push_back(std::remove_reference<GraphEdge*&>::type)’
+   27 |     _parentEdges.push_back(std::move(edge));
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/vector:66,
+                 from /home/robond/project4cpp2/src/graphedge.h:4,
+                 from /home/robond/project4cpp2/src/graphnode.cpp:1:
+/usr/include/c++/13/bits/stl_vector.h:1281:7: note: candidate: ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::unique_ptr<GraphEdge>; _Alloc = std::allocator<std::unique_ptr<GraphEdge> >; value_type = std::unique_ptr<GraphEdge>]’
+ 1281 |       push_back(const value_type& __x)
+
+
+void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
+{
+    _parentEdges.push_back(std::move(edge));
+}
