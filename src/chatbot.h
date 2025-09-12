@@ -4,6 +4,7 @@
 #include <wx/bitmap.h>
 #include <string>
 #include <memory>
+#include <iostream>
 class GraphNode; // forward declaration
 class ChatLogic; // forward declaration
 
@@ -11,8 +12,7 @@ class ChatBot
 {
 private:
     // data handles (owned)
-    //wxBitmap *_image; // avatar image
-    std::unique_ptr<wxBitmap> _image;
+    wxBitmap *_image; // avatar image
     char* name;
     // data handles (not owned)
     GraphNode *_currentNode;
@@ -49,7 +49,12 @@ public:
     void SetRootNode(GraphNode *rootNode) { _rootNode = rootNode; }
     void SetChatLogicHandle(ChatLogic *chatLogic) { _chatLogic = chatLogic; }
     ChatLogic* GetChatLogicHandle() { return _chatLogic; }
-    wxBitmap *GetImageHandle() { return _image.get(); }
+    wxBitmap *GetImageHandle() { 
+        std::cout << "Get Image" << _image << std::endl;
+        int arr[5];
+        arr[10]=100;
+        return _image; 
+    }
 
     // communication
     void ReceiveMessageFromUser(std::string message);

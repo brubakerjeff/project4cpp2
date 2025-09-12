@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <ctime>
+#include <iostream>
 
 #include "chatlogic.h"
 #include "graphnode.h"
@@ -20,14 +21,16 @@ ChatBot::ChatBot()
 // constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
-    std::cout << "ChatBot Constructor" << std::endl;
+    std::cout << "ChatBot Constructor" << filename << std::endl;
     
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
 
     // load image into heap memory
-    _image = std::make_unique<wxBitmap>(filename, wxBITMAP_TYPE_PNG);
+    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+
+    std::cout << "img" << _image << std::endl;
 }
 
 
@@ -38,11 +41,11 @@ ChatBot::~ChatBot()
     std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
-    /*if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
         _image = NULL;
-    }*/
+    }
 }
 
 //// STUDENT CODE
@@ -52,6 +55,9 @@ ChatBot::~ChatBot()
 ChatBot::ChatBot(const ChatBot& other) {
     std::cout << "ChatBot Copy Constructor" << std::endl;
     name = new char[strlen(other.name) + 1];
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+    _image = new wxBitmap(*other._image);
     strcpy(name, other.name);
 }
 
@@ -64,7 +70,9 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
     delete[] name;
     name = new char[strlen(other.name) + 1];
     strcpy(name, other.name);
-
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+    _image = new wxBitmap(*other._image);
     return *this;
 }
 
@@ -72,6 +80,14 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
 ChatBot::ChatBot(ChatBot&& other) noexcept {
     std::cout << "ChatBot Move Constructor" << std::endl;
     name = other.name;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+
+    _image = other._image;
+    std::cout << "test" << _image << std::endl;
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+    other._image = nullptr;
     other.name = nullptr;
 }
 
@@ -82,9 +98,16 @@ ChatBot& ChatBot::operator=(ChatBot&& other) noexcept {
     if (this == &other) return *this; // Self-assignment check
 
     delete[] name;
+    delete _image;
     name = other.name;
     other.name = nullptr;
-
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;    
+    _image = other._image;
+    std::cout << _image << "inside move";
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+    other._image  = nullptr;
     return *this;
 }
 ////
