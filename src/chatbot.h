@@ -51,8 +51,10 @@ public:
     ChatLogic* GetChatLogicHandle() { return _chatLogic; }
     wxBitmap *GetImageHandle() { 
         std::cout << "Get Image" << _image << std::endl;
-        int arr[5];
-        arr[10]=100;
+        if(_image->IsOk())
+            std::cout << "Image is valid\n";
+        else
+            std::cout << "Image is NOT valid\n";
         return _image; 
     }
 

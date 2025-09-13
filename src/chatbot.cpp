@@ -59,6 +59,8 @@ ChatBot::ChatBot(const ChatBot& other) {
     _rootNode = other._rootNode;
     _image = new wxBitmap(*other._image);
     strcpy(name, other.name);
+    std::cout << "hello" << _image << std::endl;
+    _chatLogic->SetChatbotHandle(this);
 }
 
 // Copy assignment operator
@@ -73,6 +75,7 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
     _chatLogic = other._chatLogic;
     _rootNode = other._rootNode;
     _image = new wxBitmap(*other._image);
+    _chatLogic->SetChatbotHandle(this);
     return *this;
 }
 
@@ -89,12 +92,13 @@ ChatBot::ChatBot(ChatBot&& other) noexcept {
     other._rootNode = nullptr;
     other._image = nullptr;
     other.name = nullptr;
+    _chatLogic->SetChatbotHandle(this);
 }
 
 // Move assignment operator
 ChatBot& ChatBot::operator=(ChatBot&& other) noexcept {
     std::cout << "ChatBot Move Assignment Operator" << std::endl;
-
+    
     if (this == &other) return *this; // Self-assignment check
 
     delete[] name;
@@ -108,6 +112,7 @@ ChatBot& ChatBot::operator=(ChatBot&& other) noexcept {
     other._chatLogic = nullptr;
     other._rootNode = nullptr;
     other._image  = nullptr;
+    _chatLogic->SetChatbotHandle(this);
     return *this;
 }
 ////
