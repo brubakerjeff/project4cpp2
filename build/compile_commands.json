@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/robond/project4cpp2/build",
+  "command": "/usr/bin/g++ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -isystem /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2 -isystem /usr/include/wx-3.2  -pthread -g -std=gnu++17 -o CMakeFiles/membot.dir/src/chatbot.cpp.o -c /home/robond/project4cpp2/src/chatbot.cpp",
+  "file": "/home/robond/project4cpp2/src/chatbot.cpp",
+  "output": "CMakeFiles/membot.dir/src/chatbot.cpp.o"
+},
+{
+  "directory": "/home/robond/project4cpp2/build",
+  "command": "/usr/bin/g++ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -isystem /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2 -isystem /usr/include/wx-3.2  -pthread -g -std=gnu++17 -o CMakeFiles/membot.dir/src/chatgui.cpp.o -c /home/robond/project4cpp2/src/chatgui.cpp",
+  "file": "/home/robond/project4cpp2/src/chatgui.cpp",
+  "output": "CMakeFiles/membot.dir/src/chatgui.cpp.o"
+},
+{
+  "directory": "/home/robond/project4cpp2/build",
+  "command": "/usr/bin/g++ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -isystem /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2 -isystem /usr/include/wx-3.2  -pthread -g -std=gnu++17 -o CMakeFiles/membot.dir/src/chatlogic.cpp.o -c /home/robond/project4cpp2/src/chatlogic.cpp",
+  "file": "/home/robond/project4cpp2/src/chatlogic.cpp",
+  "output": "CMakeFiles/membot.dir/src/chatlogic.cpp.o"
+},
+{
+  "directory": "/home/robond/project4cpp2/build",
+  "command": "/usr/bin/g++ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -isystem /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2 -isystem /usr/include/wx-3.2  -pthread -g -std=gnu++17 -o CMakeFiles/membot.dir/src/graphedge.cpp.o -c /home/robond/project4cpp2/src/graphedge.cpp",
+  "file": "/home/robond/project4cpp2/src/graphedge.cpp",
+  "output": "CMakeFiles/membot.dir/src/graphedge.cpp.o"
+},
+{
+  "directory": "/home/robond/project4cpp2/build",
+  "command": "/usr/bin/g++ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -isystem /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2 -isystem /usr/include/wx-3.2  -pthread -g -std=gnu++17 -o CMakeFiles/membot.dir/src/graphnode.cpp.o -c /home/robond/project4cpp2/src/graphnode.cpp",
+  "file": "/home/robond/project4cpp2/src/graphnode.cpp",
+  "output": "CMakeFiles/membot.dir/src/graphnode.cpp.o"
+}
+]
